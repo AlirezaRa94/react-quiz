@@ -1,11 +1,13 @@
 :root {
   --color-darkest: #343a40;
   --color-dark: #495057;
-  --color-medium: #ced4da;
+  --color-medium: #bfc4ca;
   --color-light: #f1f3f5;
 
   --color-theme: #1098ad;
-  --color-accent: #f33461;
+  --color-wrong: #f33461;
+  --color-correct: #00b894;
+  --color-accent: #fec804;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
@@ -120,8 +122,9 @@ progress {
   font-family: inherit;
   color: inherit;
   font-size: 2rem;
-  border: 2px solid var(--color-dark);
-  background-color: var(--color-dark);
+  border: 2px solid var(--color-theme);
+  background-color: var(--color-theme);
+  color: var(--color-light);
   padding: 1.2rem 2.4rem;
   cursor: pointer;
   border-radius: 100px;
@@ -129,11 +132,19 @@ progress {
 }
 
 .btn:not([disabled]):hover {
-  background-color: var(--color-darkest);
+  background-color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  color: var(--color-darkest);
 }
 
 .btn-option:not([disabled]):hover {
   transform: translateX(1.2rem);
+}
+
+.btn[disabled] {
+  background-color: var(--color-dark);
+  border: 2px solid var(--color-dark);
+  color: var(--color-medium);
 }
 
 .btn[disabled]:hover {
@@ -157,13 +168,15 @@ progress {
 }
 
 .btn-option.correct {
-  background-color: var(--color-theme);
-  border: 2px solid var(--color-theme);
+  background-color: var(--color-correct);
+  border: 2px solid var(--color-correct);
+  color: var(--color-light);
 }
 
 .btn-option.wrong {
-  background-color: var(--color-accent);
-  border: 2px solid var(--color-accent);
+  background-color: var(--color-wrong);
+  border: 2px solid var(--color-wrong);
+  color: var(--color-light);
 }
 
 .answer {
