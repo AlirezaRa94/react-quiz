@@ -5,7 +5,7 @@
   --color-light: #f1f3f5;
 
   --color-theme: #1098ad;
-  --color-accent: #ffa94d;
+  --color-accent: #f33461;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
@@ -159,12 +159,11 @@ progress {
 .btn-option.correct {
   background-color: var(--color-theme);
   border: 2px solid var(--color-theme);
-  color: var(--color-light);
 }
+
 .btn-option.wrong {
   background-color: var(--color-accent);
   border: 2px solid var(--color-accent);
-  color: var(--color-darkest);
 }
 
 .answer {
