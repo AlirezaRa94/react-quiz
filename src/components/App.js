@@ -6,6 +6,7 @@ import Error from './Error';
 import StartScreen from './StartScreen';
 import Question from './Question';
 import Options from './Options';
+import NextButton from './NextButton';
 
 const initialState = {
   questions: [],
@@ -34,6 +35,8 @@ function reducer(state, action) {
         answer: action.payload,
         points: state.points + addedPoints,
       };
+    case 'nextQuestion':
+      return { ...state, index: state.index + 1, answer: null };
     default:
       throw new Error('Unhandled action type: ' + action.type);
   }
@@ -73,13 +76,16 @@ export default function App() {
           <StartScreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
         {status === 'active' && (
-          <Question question={questions[index]}>
-            <Options
-              question={questions[index]}
-              dispatch={dispatch}
-              answer={answer}
-            />
-          </Question>
+          <>
+            <Question question={questions[index]}>
+              <Options
+                question={questions[index]}
+                dispatch={dispatch}
+                answer={answer}
+              />
+            </Question>
+            <NextButton dispatch={dispatch} answer={answer} />
+          </>
         )}
       </Main>
     </div>
