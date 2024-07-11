@@ -1,11 +1,13 @@
-function NextButton({ dispatch, answer }) {
+function NextButton({ dispatch, answer, isLastQuestion }) {
   return (
     <button
       className='btn btn-ui'
       disabled={answer === null}
-      onClick={() => dispatch({ type: 'nextQuestion' })}
+      onClick={() =>
+        dispatch({ type: isLastQuestion ? 'finish' : 'nextQuestion' })
+      }
     >
-      Next
+      {isLastQuestion ? 'Finish' : 'Next'}
     </button>
   );
 }

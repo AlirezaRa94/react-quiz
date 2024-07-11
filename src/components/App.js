@@ -8,6 +8,7 @@ import Question from './Question';
 import Options from './Options';
 import NextButton from './NextButton';
 import Progrss from './Progrss';
+import FinishScreen from './FinishScreen';
 
 const initialState = {
   questions: [],
@@ -38,6 +39,8 @@ function reducer(state, action) {
       };
     case 'nextQuestion':
       return { ...state, index: state.index + 1, answer: null };
+    case 'finish':
+      return { ...state, status: 'finished', answer: null };
     default:
       throw new Error('Unhandled action type: ' + action.type);
   }
@@ -96,8 +99,15 @@ export default function App() {
                 answer={answer}
               />
             </Question>
-            <NextButton dispatch={dispatch} answer={answer} />
+            <NextButton
+              dispatch={dispatch}
+              answer={answer}
+              isLastQuestion={index === numQuestions - 1}
+            />
           </>
+        )}
+        {status === 'finished' && (
+          <FinishScreen points={points} maxPoints={maxPoints} />
         )}
       </Main>
     </div>
