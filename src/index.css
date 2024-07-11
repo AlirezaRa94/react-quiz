@@ -8,6 +8,7 @@
   --color-wrong: #f33461;
   --color-correct: #00b894;
   --color-accent: #fec804;
+  --color-info: #6c5ce7;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Codystar&display=swap');
@@ -184,7 +185,7 @@ progress {
 }
 
 .result {
-  background-color: var(--color-theme);
+  background-color: var(--color-info);
   color: var(--color-light);
   border-radius: 100px;
   text-align: center;
