@@ -22,7 +22,7 @@ const initialState = {
   index: 0,
   answer: null,
   points: 0,
-  highscore: 0,
+  highscore: Number(localStorage.getItem('highscore')) || 0,
   secondsRemaining: null,
 };
 
@@ -111,6 +111,11 @@ export default function App() {
 
     fetchQuestions();
   }, []);
+
+  useEffect(() => {
+    status === 'finished' && localStorage.setItem('highscore', highscore);
+  }, [highscore, status]);
+
   return (
     <div className='app'>
       <Header />
