@@ -1,4 +1,5 @@
 import { useEffect, useReducer } from 'react';
+
 import Header from './Header';
 import Main from './Main';
 import Loader from './Loader';
@@ -9,6 +10,7 @@ import Options from './Options';
 import NextButton from './NextButton';
 import Progrss from './Progrss';
 import FinishScreen from './FinishScreen';
+import Footer from './Footer';
 
 const initialState = {
   questions: [],
@@ -110,11 +112,13 @@ export default function App() {
                 answer={answer}
               />
             </Question>
-            <NextButton
-              dispatch={dispatch}
-              answer={answer}
-              isLastQuestion={index === numQuestions - 1}
-            />
+            <Footer>
+              <NextButton
+                dispatch={dispatch}
+                answer={answer}
+                isLastQuestion={index === numQuestions - 1}
+              />
+            </Footer>
           </>
         )}
         {status === 'finished' && (
