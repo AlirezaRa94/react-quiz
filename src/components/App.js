@@ -65,11 +65,18 @@ function reducer(state, action) {
         highscore: state.highscore,
       };
     case 'tick':
+      if (state.secondsRemaining < 1) {
+        return {
+          ...state,
+          status: 'finished',
+          highscore: Math.max(state.points, state.highscore),
+          answer: null,
+        };
+      }
+
       return {
         ...state,
         secondsRemaining: state.secondsRemaining - 1,
-        status: state.secondsRemaining === 0 ? 'finished' : state.status,
-        highscore: Math.max(state.points, state.highscore),
       };
     default:
       throw new Error('Unhandled action type: ' + action.type);
